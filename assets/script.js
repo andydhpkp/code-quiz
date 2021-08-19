@@ -1,6 +1,160 @@
 //access body element
 var body = document.body;
 
+//questions array
+const questions = [
+    {
+        question: "A loop that never ends is referred to as a(n)_______.",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "Which of the following represents the and operator in JavaScript?",
+        answers: {
+            1: "|",
+            2: "|&",
+            3: "&&",
+            4: "&"
+        },
+        correctAnswer: 3
+    },
+    {
+        question: "Which of the following represents the or operator in Javascript?",
+        answers: {
+            1: "|",
+            2: "||",
+            3: "&&",
+            4: "&"
+        },
+        correctAnswer: 2
+    },
+    {
+        question: "What is the proper way to compare if two values are 'not equal' in a boolean expression in JavaScript?",
+        answers: {
+            1: "==",
+            2: "x=",
+            3: "!=",
+            4: "?="
+        },
+        correctAnswer: 3
+    },
+    {
+        question: "Which of the following allows you to run a block of code only if a certain condition is true?",
+        answers: {
+            1: "If Statement",
+            2: "For Loop",
+            3: "HTML",
+            4: "CSS"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "Which of the following statements allows us to exit a loop?",
+        answers: {
+            1: "Exit",
+            2: "Leave",
+            3: "Stop",
+            4: "Break"
+        },
+        correctAnswer: 4
+    },
+    {
+        question: "What does the <title> tag do?",
+        answers: {
+            1: "Act as the heading of the page",
+            2: "The string that appears in the browser tab",
+            3: "The label for the header",
+            4: "The name for the repository"
+        },
+        correctAnswer: 2
+    },
+    {
+        question: "Which language allows us to style a website?",
+        answers: {
+            1: "Python",
+            2: "JavaScript",
+            3: "CSS",
+            4: "HTML"
+        },
+        correctAnswer: 3
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },
+    {
+        question: "",
+        answers: {
+            1: "Infinite Loop",
+            2: "While Loop",
+            3: "Recursive Loop",
+            4: "For Loop"
+        },
+        correctAnswer: 1
+    },  
+]
+
 //create and add header element
 var headerEl = document.createElement('header');
 var headerTextLeft = document.createElement('div');
@@ -39,7 +193,10 @@ main.appendChild(startButton);
 
 //question div for all questions
 var questionDiv = document.createElement('div');
+main.appendChild(questionDiv);
 
-function askQuestion() {
-    
+function clearMain() {
+    main.removeChild(welcomeH1El);
+    main.removeChild(welcomeP);
+    main.removeChild(startButton);
 }
