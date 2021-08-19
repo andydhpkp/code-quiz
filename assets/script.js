@@ -37,11 +37,9 @@ startButton.innerHTML = "Start Quiz";
 startButton.setAttribute('style', 'width:20%; padding:15px 0; border-radius:10px; font-size:16px; text-align:center;');
 main.appendChild(startButton);
 
-/* width: 10%;
-border: 1px solid var(--head-foot-color);
-background: var(--head-foot-color);
-color: var(--background-color);
-text-align: center;
-padding: 15px 0;
-font-size: 16px;
-border-radius: 10px; */
+//question div for all questions
+var questionDiv = document.createElement('div');
+
+function askQuestion() {
+    
+}
