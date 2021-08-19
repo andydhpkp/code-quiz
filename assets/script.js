@@ -14,7 +14,7 @@ const questions = [
         correctAnswer: 1
     },
     {
-        question: "Which of the following represents the and operator in JavaScript?",
+        question: "Which of the following represents the AND operator in JavaScript?",
         answers: {
             1: "|",
             2: "|&",
@@ -24,7 +24,7 @@ const questions = [
         correctAnswer: 3
     },
     {
-        question: "Which of the following represents the or operator in Javascript?",
+        question: "Which of the following represents the OR operator in Javascript?",
         answers: {
             1: "|",
             2: "||",
@@ -84,72 +84,72 @@ const questions = [
         correctAnswer: 3
     },
     {
-        question: "",
+        question: "Which command gets the code to github?",
         answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
+            1: "git push origin <branch-name>",
+            2: "git commit -m 'message",
+            3: "git add .",
+            4: "git checkout <branch-name>"
         },
         correctAnswer: 1
     },
     {
-        question: "",
+        question: "Which popular third-party API is for styling?",
         answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
+            1: "Bootstrap",
+            2: "jQuery",
+            3: "Angular",
+            4: "React"
         },
         correctAnswer: 1
     },
     {
-        question: "",
+        question: "What is the typical starting file for a website?",
         answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
+            1: "home.html",
+            2: "index.html",
+            3: "start.html",
+            4: "script.html"
+        },
+        correctAnswer: 2
+    },
+    {
+        question: "What is the structure of a for loop?",
+        answers: {
+            1: "(i < x; i++; i = 0)",
+            2: "(i++; i < x; i = 0)",
+            3: "(i < x; i = 0; i++)",
+            4: "(i = 0; i < x; i++)"
+        },
+        correctAnswer: 4
+    },
+    {
+        question: "What characters must be apart of the function declaration?",
+        answers: {
+            1: "//",
+            2: "[]",
+            3: "{}",
+            4: "()"
+        },
+        correctAnswer: 4
+    },
+    {
+        question: "What characters are needed for an array?",
+        answers: {
+            1: "[]",
+            2: "{}",
+            3: "()",
+            4: "<>"
         },
         correctAnswer: 1
     },
     {
-        question: "",
+        question: "What allows the website to resize based on the screen size?",
         answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
-        },
-        correctAnswer: 1
-    },
-    {
-        question: "",
-        answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
-        },
-        correctAnswer: 1
-    },
-    {
-        question: "",
-        answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
-        },
-        correctAnswer: 1
-    },
-    {
-        question: "",
-        answers: {
-            1: "Infinite Loop",
-            2: "While Loop",
-            3: "Recursive Loop",
-            4: "For Loop"
+            1: "Screen Sizer",
+            2: "Media Queries",
+            3: "Screen Media",
+            4: "Size Function"
         },
         correctAnswer: 1
     },  
