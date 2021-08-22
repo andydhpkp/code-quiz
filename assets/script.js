@@ -1,8 +1,16 @@
 //access body element
 var body = document.body;
 
+//variable to store the score
+var finalScore = 0;
+
+//for the guess
+var guess = "";
+
+var questionNumber = 0;
+
 //questions array
-const questions = [
+const questionsArr = [
     {
         question: "A loop that never ends is referred to as a(n)_______.",
         answers: {
@@ -11,7 +19,7 @@ const questions = [
             3: "Recursive Loop",
             4: "For Loop"
         },
-        correctAnswer: 1
+        correctAnswer: "Infinite Loop"
     },
     {
         question: "Which of the following represents the AND operator in JavaScript?",
@@ -21,7 +29,7 @@ const questions = [
             3: "&&",
             4: "&"
         },
-        correctAnswer: 3
+        correctAnswer: "&&"
     },
     {
         question: "Which of the following represents the OR operator in Javascript?",
@@ -31,7 +39,7 @@ const questions = [
             3: "&&",
             4: "&"
         },
-        correctAnswer: 2
+        correctAnswer: "||"
     },
     {
         question: "What is the proper way to compare if two values are 'not equal' in a boolean expression in JavaScript?",
@@ -41,7 +49,7 @@ const questions = [
             3: "!=",
             4: "?="
         },
-        correctAnswer: 3
+        correctAnswer: "!="
     },
     {
         question: "Which of the following allows you to run a block of code only if a certain condition is true?",
@@ -51,7 +59,7 @@ const questions = [
             3: "HTML",
             4: "CSS"
         },
-        correctAnswer: 1
+        correctAnswer: "If Statement"
     },
     {
         question: "Which of the following statements allows us to exit a loop?",
@@ -61,7 +69,7 @@ const questions = [
             3: "Stop",
             4: "Break"
         },
-        correctAnswer: 4
+        correctAnswer: "Break"
     },
     {
         question: "What does the <title> tag do?",
@@ -71,7 +79,7 @@ const questions = [
             3: "The label for the header",
             4: "The name for the repository"
         },
-        correctAnswer: 2
+        correctAnswer: "The string that appears in the browser tab"
     },
     {
         question: "Which language allows us to style a website?",
@@ -81,7 +89,7 @@ const questions = [
             3: "CSS",
             4: "HTML"
         },
-        correctAnswer: 3
+        correctAnswer: "CSS"
     },
     {
         question: "Which command gets the code to github?",
@@ -91,7 +99,7 @@ const questions = [
             3: "git add .",
             4: "git checkout <branch-name>"
         },
-        correctAnswer: 1
+        correctAnswer: "git push origin <branch-name>"
     },
     {
         question: "Which popular third-party API is for styling?",
@@ -101,7 +109,7 @@ const questions = [
             3: "Angular",
             4: "React"
         },
-        correctAnswer: 1
+        correctAnswer: "Bootstrap"
     },
     {
         question: "What is the typical starting file for a website?",
@@ -111,7 +119,7 @@ const questions = [
             3: "start.html",
             4: "script.html"
         },
-        correctAnswer: 2
+        correctAnswer: "index.html"
     },
     {
         question: "What is the structure of a for loop?",
@@ -121,7 +129,7 @@ const questions = [
             3: "(i < x; i = 0; i++)",
             4: "(i = 0; i < x; i++)"
         },
-        correctAnswer: 4
+        correctAnswer: "(i = 0; i < x; i++)"
     },
     {
         question: "What characters must be apart of the function declaration?",
@@ -131,7 +139,7 @@ const questions = [
             3: "{}",
             4: "()"
         },
-        correctAnswer: 4
+        correctAnswer: "()"
     },
     {
         question: "What characters are needed for an array?",
@@ -141,7 +149,7 @@ const questions = [
             3: "()",
             4: "<>"
         },
-        correctAnswer: 1
+        correctAnswer: "[]"
     },
     {
         question: "What allows the website to resize based on the screen size?",
@@ -151,7 +159,7 @@ const questions = [
             3: "Screen Media",
             4: "Size Function"
         },
-        correctAnswer: 1
+        correctAnswer: "Screen Sizer"
     },  
 ]
 
@@ -189,14 +197,142 @@ main.appendChild(welcomeP);
 var startButton = document.createElement('BUTTON');
 startButton.innerHTML = "Start Quiz";
 startButton.setAttribute('style', 'width:20%; padding:15px 0; border-radius:10px; font-size:16px; text-align:center;');
+startButton.setAttribute('id', 'startButton');
 main.appendChild(startButton);
 
 //question div for all questions
 var questionDiv = document.createElement('div');
 main.appendChild(questionDiv);
 
+var question = document.createElement('h1');
+var answerDiv = document.createElement('div');
+var answer1 = document.createElement('BUTTON');
+var answer2 = document.createElement('BUTTON');
+var answer3 = document.createElement('BUTTON');
+var answer4 = document.createElement('BUTTON');
+
+//startButton.onclick = clearMain(), displayQuestion(questionNumber);
+
 function clearMain() {
     main.removeChild(welcomeH1El);
     main.removeChild(welcomeP);
     main.removeChild(startButton);
+}
+
+document.getElementById('startButton').addEventListener("click", startQuiz);
+
+function startQuiz() {
+    questionNumber = 0;
+    finalScore = 0;
+    main.removeChild(welcomeH1El);
+    main.removeChild(welcomeP);
+    main.removeChild(startButton);
+
+    displayQuestion(questionNumber);
+}
+
+function displayQuestion(round) {
+    //add in question
+    console.log(round);
+
+    if (round < 15) {
+
+        question.textContent = questionsArr[round].question;
+        answer1.innerHTML = questionsArr[round].answers[1];
+        answer2.innerHTML = questionsArr[round].answers[2];
+        answer3.innerHTML = questionsArr[round].answers[3];
+        answer4.innerHTML = questionsArr[round].answers[4];
+
+        question.setAttribute('style', 'margin:auto; width:100%; text-align:center;');
+        answerDiv.setAttribute('style', 'display:flex; flex-wrap:wrap');
+        answer1.setAttribute('style', 'width:100%; margin: 10px; padding:15px 0; border-radius:10px; font-size:16px; text-align:center;');
+        answer2.setAttribute('style', 'width:100%; margin: 10px; padding:15px 0; border-radius:10px; font-size:16px; text-align:center;');
+        answer3.setAttribute('style', 'width:100%; margin: 10px; padding:15px 0; border-radius:10px; font-size:16px; text-align:center;');
+        answer4.setAttribute('style', 'width:100%; margin: 10px; padding:15px 0; border-radius:10px; font-size:16px; text-align:center;');
+        main.appendChild(question);
+        main.appendChild(answerDiv);
+        answerDiv.appendChild(answer1);
+        answerDiv.appendChild(answer2);
+        answerDiv.appendChild(answer3);
+        answerDiv.appendChild(answer4);
+
+        answer1.onclick = answer1fun;
+        answer2.onclick = answer2fun;
+        answer3.onclick = answer3fun;
+        answer4.onclick = answer4fun;
+
+    } else {
+        gameOver();
+    }
+
+    
+
+    function answer1fun () {
+
+        guess = answer1.innerHTML;
+        questionNumber++;
+
+        if (guess === questionsArr[round].correctAnswer) {
+            finalScore = finalScore + 5;
+            displayQuestion(questionNumber);
+        } else {
+            //timer increase
+            displayQuestion(questionNumber);
+        }
+
+    }
+
+    function answer2fun () {
+
+        guess = answer2.innerHTML;
+        questionNumber++;
+
+        if (guess === questionsArr[round].correctAnswer) {
+            finalScore = finalScore + 5;
+            displayQuestion(questionNumber);
+        } else {
+            //timer increase
+            displayQuestion(questionNumber);
+        }
+    }
+
+    function answer3fun () {
+
+        guess = answer3.innerHTML;
+        questionNumber++;
+
+        if (guess === questionsArr[round].correctAnswer) {
+            finalScore = finalScore + 5;
+            displayQuestion(questionNumber);
+        } else {
+            //timer increase
+            displayQuestion(questionNumber);
+        }
+    }
+
+    function answer4fun () {
+
+        guess = answer4.innerHTML;
+        questionNumber++;
+
+        if (guess === questionsArr[round].correctAnswer) {
+            finalScore = finalScore + 5;
+            displayQuestion(questionNumber);
+        } else {
+            //timer increase
+            displayQuestion(questionNumber);
+        }
+    }
+
+}
+
+function gameOver() {
+    main.removeChild(answerDiv);
+    var initialsTextBox = document.createElement('INPUT');
+    var initialsPrompt = document.createElement('p');
+    initialsPrompt.textContent = 'Enter initials to save your score!'
+    initialsTextBox.setAttribute('type', 'text');
+    question.textContent = 'Game over, well done! You have a final score of ' + finalScore;
+    main.appendChild(initialsPrompt);
+    main.appendChild(initialsTextBox);
 }
