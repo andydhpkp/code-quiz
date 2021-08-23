@@ -9,6 +9,14 @@ var guess = "";
 
 var questionNumber = 0;
 
+var timer = 100;
+
+var answerGuess = true;
+
+var gameIsOver = false;
+
+var highScoreObject = {};
+
 //questions array
 const questionsArr = [
     {
@@ -167,14 +175,14 @@ const questionsArr = [
 var headerEl = document.createElement('header');
 var headerTextLeft = document.createElement('div');
 var headerTextRight = document.createElement('div');
-headerEl.setAttribute('style', 'display:flex; justify-content:space-between');
+var timerEl = document.createElement('h2');
+headerEl.setAttribute('style', 'display:flex; justify-content:space-between; margin:0;');
 headerTextLeft.textContent = "High Scores";
-headerTextLeft.setAttribute('style', '');
-headerTextRight.textContent = "timer";
-headerTextRight.setAttribute('style', '');
+headerTextLeft.setAttribute('style', 'padding:15px;');
 body.appendChild(headerEl);
 headerEl.appendChild(headerTextLeft);
 headerEl.appendChild(headerTextRight);
+headerTextRight.appendChild(timerEl);
 
 //create and add main element
 var main = document.createElement('main');
@@ -190,7 +198,7 @@ main.appendChild(welcomeH1El);
 //create and add welcome message
 var welcomeP = document.createElement('p');
 welcomeP.textContent = "Welcome to my coding quiz! There are 15 questions to test your coding knowledge in 100 seconds. Do your best to get the high score, but be warned that all incorrect answers will take off 10 seconds from the timer!";
-welcomeP.setAttribute('style', 'text-align:center; width:85%');
+welcomeP.setAttribute('style', 'text-align:center; width:85%;');
 main.appendChild(welcomeP);
 
 //create and add start button
@@ -211,12 +219,42 @@ var answer2 = document.createElement('BUTTON');
 var answer3 = document.createElement('BUTTON');
 var answer4 = document.createElement('BUTTON');
 
-//startButton.onclick = clearMain(), displayQuestion(questionNumber);
+startButton.onclick = countdown;
+headerTextLeft.onclick = highScores;
 
-function clearMain() {
-    main.removeChild(welcomeH1El);
-    main.removeChild(welcomeP);
-    main.removeChild(startButton);
+function countdown(timer) {
+    timer = 100;
+
+    var timeInterval = setInterval(function() {
+        if (timer > 0) {
+            timerEl.textContent = timer;
+            timer--;
+            if (!answerGuess) {
+                timer = timer -5;
+            }
+            if (gameIsOver) {
+                clearInterval(timeInterval);
+                timerEl.textContent = 0;
+            }
+            answerGuess = true;
+        } else {
+            gameOver();
+        }
+    }, 1000);
+}
+
+function checkTimerPenalty() {
+
+    console.log(answerGuess);
+
+    if(!answerGuess) {
+        return timer = timer - 5;
+    }
+}
+
+function timerDone() {
+    timerEl.textContent = '';
+    clearInterval(timeInterval);
 }
 
 document.getElementById('startButton').addEventListener("click", startQuiz);
@@ -276,7 +314,7 @@ function displayQuestion(round) {
             finalScore = finalScore + 5;
             displayQuestion(questionNumber);
         } else {
-            //timer increase
+            answerGuess = false;
             displayQuestion(questionNumber);
         }
 
@@ -291,7 +329,7 @@ function displayQuestion(round) {
             finalScore = finalScore + 5;
             displayQuestion(questionNumber);
         } else {
-            //timer increase
+            answerGuess = false;
             displayQuestion(questionNumber);
         }
     }
@@ -305,7 +343,7 @@ function displayQuestion(round) {
             finalScore = finalScore + 5;
             displayQuestion(questionNumber);
         } else {
-            //timer increase
+            answerGuess = false;
             displayQuestion(questionNumber);
         }
     }
@@ -319,7 +357,7 @@ function displayQuestion(round) {
             finalScore = finalScore + 5;
             displayQuestion(questionNumber);
         } else {
-            //timer increase
+            answerGuess = false;
             displayQuestion(questionNumber);
         }
     }
@@ -327,12 +365,45 @@ function displayQuestion(round) {
 }
 
 function gameOver() {
+    gameIsOver = true;
     main.removeChild(answerDiv);
     var initialsTextBox = document.createElement('INPUT');
     var initialsPrompt = document.createElement('p');
+    var saveScoreButton = document.createElement('BUTTON');
     initialsPrompt.textContent = 'Enter initials to save your score!'
     initialsTextBox.setAttribute('type', 'text');
-    question.textContent = 'Game over, well done! You have a final score of ' + finalScore;
+    initialsTextBox.setAttribute('id', 'initialsText');
+    initialsTextBox.setAttribute('style', 'width:fit-content; margin:auto; height:40px; border:1px solid black;');
+    saveScoreButton.innerHTML = 'Save Score';
+    saveScoreButton.setAttribute('style', 'width:20%; padding:15px 0; border-radius:10px; font-size:16px; text-align:center; margin:20px auto;');
+    saveScoreButton.setAttribute('id', 'saveScoreButton');
+    question.textContent = 'Quiz is over, well done! You have a final score of ' + finalScore;
+    main.setAttribute('style', 'display:flex; margin:20px; flex-direction:column; text-align:center;');
     main.appendChild(initialsPrompt);
     main.appendChild(initialsTextBox);
+    main.appendChild(saveScoreButton);
+    saveScoreButton.onclick = saveScore;
+
+}
+
+function saveScore() {
+
+    if (document.getElementById('initialsText').value === '') {
+        alert('please put in valid initials');
+    }
+    var userInitials = document.getElementById('initialsText').value;
+
+    var checkHighScore = localStorage.getItem(finalScore);
+
+    if (checkHighScore > finalScore) {
+        localStorage.setItem(userInitials, finalScore);
+    }
+}
+
+function highScores() {
+
+    var theHighScore = localStorage.getItem(userInitials);
+
+    headerTextLeft.textContent = theHighScore;
+    headerEl.appendChild(headerTextLeft);
 }
